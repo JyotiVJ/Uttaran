@@ -1,0 +1,53 @@
+<div class="col-md-4">
+ <!--  <div class="input-group">
+      <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" [(ngModel)]="search" (input)="startSearch()" aria-describedby="search-addon" />
+      <button type="button" class="btn btn-outline-primary" ><i class="fa fa-search"></i></button>
+  </div> -->
+  </div>
+  <div class="col-md-8">
+      <div style="float: right;">
+          <button class="btn btn-danger" routerLink="add"><i _ngcontent-jlk-c84="" class="fa fa-plus fa-md"></i> Add Podcast Categories</button>
+      </div>
+  </div>
+  <div >
+  <table class="table"  >
+  
+      <thead>
+        <tr>
+          <th style="width: 10%;" scope="col">SI</th> 
+          <th style="width: 15%;" scope="col">Cover Image</th>
+          <th style="width: 15%;" scope="col">Name</th>
+          <th style="width: 15%;" scope="col">Details</th>
+          <th style="width: 15%;" scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+  
+       <ng-container *ngFor="let podcastCategory of podcastCategoryList; let i=index"> 
+        <tr>
+          <td style="width: 10%;" scope="row">{{i+1}}</td>
+          <td style="width: 15%;" ><img style="width: 33% ;height: 33%;" [src]="podcastCategory.imgURL" alt="">
+           <!-- <span> <img style="width: 33% ;height: 33%;"  src="" alt=""></span> --></td>
+          <td style="width: 15%;">{{podcastCategory.name}}</td>
+          <td style="width: 15%;">{{podcastCategory.details}}</td>
+          <td style="width: 15%;">
+              <a class="btn btn-light btn-sm" title="Edit"  (click)="navigateToEdit(podcastCategory.id)">
+              <i class="fa fa-edit fa-lg"></i>
+              </a>
+              <a class="btn btn-light btn-sm" title="Details" (click)="navigateToEditDetails(podcastCategory.id)">
+              <i class="fa fa-eye fa-lg"></i>
+              </a>
+              <a class="btn btn-light btn-sm" title="Delete" (click)="navigateToEdit(podcastCategory.id)"> 
+                       <i class="fa fa-trash fa-lg"></i>
+      </a>
+         </td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+    </div>
+         <!-- LOADER -->
+        <!--  <div  align="center" class="loder">
+          <img  src="assets/images/loader.gif" alt="loader" />  
+      </div>   -->
+    

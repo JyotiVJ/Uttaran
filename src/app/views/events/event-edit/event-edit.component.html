@@ -1,0 +1,83 @@
+<form [formGroup]="addForm" (ngSubmit)="submitEvents()">
+                <div class="modal-body">
+                    <div class="form-group  text-center">
+
+                      <div class="file_upload">
+                         <img [src]="isImageUrl" alt="" class="upload_img"  *ngIf="imageStatus==0"/>
+
+                          <img [src]="imgURL" alt="" class="upload_img"  *ngIf="imageStatus==1"/>
+                        <div class="input--file">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg"  width="24" height="24" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="3.2"/>
+                                    <path d="M9 2l-1.83 2h-3.17c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-12c0-1.1-.9-2-2-2h-3.17l-1.83-2h-6zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5  5-2.24 5-5 5z"/>
+                                    <path d="M0 0h24v24h-24z" fill="none"/>
+                                </svg>
+                            </span>
+                           
+                            <input name="Select File" id="coverImage" (change)="fileUpload($event)"  type="file" formControlName="event_image"/>
+                        </div>                 
+                    </div>
+
+                  <!--   <p class="file_upload_text">Add Image </p>
+                                <ng-container *ngIf="formSubmitted && f.loan_cat_image.errors">
+                               <span *ngIf="f.loan_cat_image.errors.required || f.loan_cat_image.errors.noSpace" style="color: #ff301e;">*Please Add Image</span>
+                              </ng-container> -->
+
+                          <div class="form-group mt-3">
+                              <label for="Title"><h5> Event Title</h5></label>
+                              <input type="text" class="form-control"  placeholder="Enter Title" formControlName="event_title" maxlength="100">
+                             <!--  <ng-container *ngIf="formSubmitted && f.title.errors">
+                               <span *ngIf="f.title.errors.required || f.title.errors.noSpace" style="color: #ff301e;">*Please enter the title</span>
+                              </ng-container>  -->
+                          </div>
+                           <div class="form-group mt-3">
+                              <label for="Title"><h5> Event Title</h5></label>
+                              <input type="text" class="form-control"  placeholder="Enter Title" formControlName="event_description" maxlength="100">
+                             <!--  <ng-container *ngIf="formSubmitted && f.title.errors">
+                               <span *ngIf="f.title.errors.required || f.title.errors.noSpace" style="color: #ff301e;">*Please enter the title</span>
+                              </ng-container>  -->
+                          </div>
+                           <div class="form-group mt-3">
+                              <label for="Title"><h5> Event Location</h5></label>
+                              <input type="text" class="form-control"  placeholder="Enter Location" formControlName="event_location" maxlength="100">
+                             <!--  <ng-container *ngIf="formSubmitted && f.title.errors">
+                               <span *ngIf="f.title.errors.required || f.title.errors.noSpace" style="color: #ff301e;">*Please enter the title</span>
+                              </ng-container>  -->
+                          </div>
+                           <div class="form-group mt-3">
+                              <label for="Title"><h5> Event Type</h5></label>
+                              
+                               <select class="form-control"  formControlName="event_type">
+                                  <option value="">Select Make</option>
+                                  <option value="2">Educational</option> 
+                                  <option value="3">Social</option>
+                                  <option value="1">Cultural</option>
+                              </select>
+                             <!--  <ng-container *ngIf="formSubmitted && f.title.errors">
+                               <span *ngIf="f.title.errors.required || f.title.errors.noSpace" style="color: #ff301e;">*Please enter the title</span>
+                              </ng-container>  -->
+                          </div>
+
+                           <div class="form-group mt-3">
+                              <label for="Title"><h5>Date</h5></label>
+                              <input type="date" class="form-control"  formControlName="event_date" maxlength="100">
+                             <!--  <ng-container *ngIf="formSubmitted && f.startDate.errors">
+                               <span *ngIf="f.startDate.errors.required || f.startDate.errors.noSpace" style="color: #ff301e;">*Please enter the startDate</span>
+                              </ng-container> --> 
+                          </div>
+
+                          
+
+                      
+                  </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn btn-danger blue_but m-0">Add</button>
+                </div>
+              </div>
+            </form>
+
+             <!-- LOADER -->
+        <div  align="center" *ngIf="isLoading" class="loder">
+          <img  src="assets/images/loader.gif" alt="loader" />  
+      </div> 

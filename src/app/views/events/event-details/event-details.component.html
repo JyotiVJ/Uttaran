@@ -1,0 +1,45 @@
+
+<div class="animated fadeIn">
+    <div class="">
+        <div class="row">
+            <div class="col-md-6">
+                <span><h3>Event  Details</h3></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <img class="customeImage" width="80px" height="80px" *ngIf="imgURL" [src]="imgURL" alt="">
+                    <span *ngIf="imgURL==''">NA</span>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="input-group">
+                  <strong>Event Title: {{getEvent?.event_title}}</strong>
+                </div>
+                <div class="input-group">
+                    <strong> Event Description: {{getEvent?.event_description}}</strong>
+                </div>
+                <div class="input-group">
+                    <strong>Event Location: {{getEvent?.event_location}}</strong>
+                </div>
+                <div class="input-group">
+                    <strong>Event Date: {{getEventDate}}</strong>
+                </div>
+
+                <div class="input-group">
+                    <strong> <div>Event Type : <span *ngIf="getEvent.event_type == 1">Educational</span>
+                <span *ngIf="getEvent.event_type == 2">Social</span>
+                <span *ngIf="getEvent.event_type == 3">Cultural</span>
+             </div></strong>
+             </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- LOADER -->
+    <div *ngIf="isLoading" class="loder">
+        <img src="assets/images/loader.gif" alt="loader" />  
+    </div>
+</div>

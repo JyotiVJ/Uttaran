@@ -1,0 +1,60 @@
+<div class="page_indide">
+    <div class="page_heading"> 
+        <h2>About Us</h2>
+    </div>
+       
+
+    <div class="contact_main_area">
+        <div class="card-body"> 
+            <div class="row"> 
+                <div class="col-12">
+                    <form  [formGroup]="addForm"  autocomplete="off" (ngSubmit)="updateAboutUs()">
+                        <div class="form-group">
+                            <ckeditor  [editor]="Editor" data="" formControlName="aboutUs_title" ></ckeditor>
+                            <ckeditor  [editor]="Editor" data="" formControlName="aboutUs_body" ></ckeditor>
+
+
+                            <div class="file_upload1">
+                            <!-- <img [src]="getParentLoanCategoryDetails.image" class="upload_fild_img" /> -->
+                           <!--  <input (change)="editfileUpload($event)" type="file" formControlName="file">
+                            <img style="height: 180px; width: 250px;"  [src]="imgURL" alt=""  *ngIf="imageStatus==1"/>
+                            <img style="height: 180px; width: 250px;" [src]="imageUrl" alt=""  *ngIf="imageStatus==0"/>
+                                 
+                            </div> -->
+
+
+<!--                             <div class="file_upload1"> -->
+                                     <img style="height: 180px; width: 250px;"  [src]="imgURL" alt=""  *ngIf="imageStatus==1"/>
+                                     <img style="height: 180px; width: 250px;" [src]="imageUrl" alt=""  *ngIf="imageStatus==0"/>
+                                     <div class="input--file">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                                <circle cx="12" cy="12" r="3.2"/>
+                                                <path d="M9 2l-1.83 2h-3.17c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-12c0-1.1-.9-2-2-2h-3.17l-1.83-2h-6zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+                                                <path d="M0 0h24v24h-24z" fill="none"/>
+                                            </svg>
+                                        </span>
+                                        <!-- <input name="Select File" id="coverImage" (change)="coverAlbumUpload($event)" type="file" formControlName="file"/> -->
+                                        <input (change)="editfileUpload($event)" type="file" formControlName="aboutUs_image">
+                                    </div>                
+                                </div> 
+
+                             
+                        </div>
+                        <div class="form-group text-right">
+                        <button type="submit" class="btn btn btn-danger ">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>        
+        </div>
+    </div> 
+    
+     
+
+</div> 
+
+<!-- LOADER -->
+<div align="center" *ngIf="isLoading" class="loder">
+    <img src="assets/images/loader.gif" alt="loader" />  
+</div>

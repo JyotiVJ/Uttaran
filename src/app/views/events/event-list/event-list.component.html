@@ -1,0 +1,77 @@
+
+
+<div class="col-md-4">
+  <div class="input-group">
+      <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" [(ngModel)]="search" (input)="startSearch()" aria-describedby="search-addon" />
+      <button type="button" class="btn btn-outline-primary" ><i class="fa fa-search"></i></button>
+  </div>
+  </div>
+  <div class="col-md-8">
+      <div style="float: right;">
+          <button class="btn btn-danger" routerLink="add"><i _ngcontent-jlk-c84="" class="fa fa-plus fa-md"></i> Add Event</button>
+      </div>
+  </div>
+  <div 
+            infiniteScroll
+            [infiniteScrollDistance]="2"
+            [infiniteScrollThrottle]="50"
+            (scrolled)="onScroll()">
+  <table class="table"  >
+  
+      <thead>
+        <tr>
+          <th style="width: 10%;" scope="col">SI</th> 
+          <th style="width: 15%;" scope="col">Event Image</th>
+          <th style="width: 15%;" scope="col">Event Title</th>
+          <th style="width: 15%;" scope="col">Event Type</th>
+          <th style="width: 15%;" scope="col">Event Description</th>
+          <th style="width: 15%;" scope="col">Event Status</th>
+          <th style="width: 15%;" scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+  
+      <ng-container *ngFor="let event of eventList; let i=index"> 
+        <tr>
+          <td style="width: 10%;" scope="row">{{1+i}}.</td>
+          <td style="width: 15%;" ><img style="width: 33% ;height: 33%;" *ngIf="event.imgURL"  [src]="event.imgURL" alt="">
+           <span> <img style="width: 33% ;height: 33%;" *ngIf="!event.imgURL"  [src]="image" alt=""></span></td>
+          <td style="width: 15%;">{{event.event_title}}</td>
+          <td style="width: 15%;">
+            <span *ngIf="event.event_type == '1' ">Cultural</span>
+            <span  *ngIf="event.event_type ==  '2' ">Educational</span>
+            <span *ngIf="event.event_type == '3' ">Social</span>
+            </td>
+          <td style="width: 15%;" >{{event.event_description}}</td>
+          <td style="width: 15%;"><div style="width: 10%;">
+            <i title="On" style="cursor: pointer;" *ngIf="event.event_status == 1"  (click)="openStatusChange(event.id)"  class="fa fa-toggle-on fa-lg"></i>
+            <i title="OFF" style="cursor: pointer;" *ngIf="event.event_status == 0" (click)="openStatusReChange(event.id)" class="fa fa-toggle-off fa-lg"></i>
+              </div>
+            </td>
+          <td style="width: 15%;">
+              <a class="btn btn-light btn-sm" title="Edit" [popover]="'Edit'"
+                  [appendToBody]="true" popoverPlacement="top-center"
+                  [popoverCloseOnMouseOutside]="true" (click)="navigateToEdit(event.id)" >
+              <i class="fa fa-edit fa-lg"></i>
+              </a>
+              <a class="btn btn-light btn-sm" title="Details" [popover]="'Details'"
+              [appendToBody]="true" popoverPlacement="top-center"
+              [popoverCloseOnMouseOutside]="true" (click)="navigateToDetails(event.id)">
+              <i class="fa fa-eye fa-lg"></i>
+              </a>
+              <a class="btn btn-light btn-sm" title="Delete" [popover]="'Delete'"
+              [appendToBody]="true" popoverPlacement="top-center"
+              [popoverCloseOnMouseOutside]="true" (click)="openDeleteConfirmation(event.id)">
+          <i class="fa fa-trash fa-lg"></i>
+      </a>
+         </td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+    </div>
+         <!-- LOADER -->
+         <div  align="center" *ngIf="isLoading" class="loder">
+          <img  src="assets/images/loader.gif" alt="loader" />  
+      </div>  
+    

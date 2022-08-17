@@ -1,0 +1,23 @@
+<div class="col-12">
+                        <p> Images</p> 
+                        <div class="file_upload2">
+                            <ng-container *ngFor="let multiple of isVehicleImageUrl; let index = index">
+                                <div class="img-wrap" class="ng-hide" (click)="dismiss(index)">
+                                    <span class="close">&times;</span>
+                                    <img style="height: 104px; border-radius: 200px; width: 104px;" [src]="multiple"
+                                        alt="" class="upload_img2" />
+                                </div>
+                            </ng-container> 
+                            <div  *ngIf="!imageError" class="input--file2">
+                                <span>
+                                    <i class="fas fa-camera"></i> Upload Images 
+                                </span>
+                                <input name="Select File" id="coverImage" (change)="onSelectFile($event)" multiple=""
+                                    type="file" formControlName="file" />
+                                      <ng-container *ngIf="imageSixAllowed">
+                             <span  style="color: #ff301e;">*Only 6 Images Are Allowed</span>
+                            </ng-container>
+
+                            </div>
+                        </div>
+                    </div>

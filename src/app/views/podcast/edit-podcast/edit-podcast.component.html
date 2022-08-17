@@ -1,0 +1,76 @@
+ <form [formGroup]="addForm" (ngSubmit)="submitPodcastCateories()">
+                    <div class="form-group">
+
+                      <div class="file_upload1">
+                        <img [src]="isImageUrl" alt="" class="upload_fild_img" />
+                        <div class="input--file">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="3.2"/>
+                                    <path d="M9 2l-1.83 2h-3.17c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-12c0-1.1-.9-2-2-2h-3.17l-1.83-2h-6zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5  5-2.24 5-5 5z"/>
+                                    <path d="M0 0h24v24h-24z" fill="none"/>
+                                </svg>
+                            </span>
+                           
+                            <input name="Select File" id="coverImage" (change)="fileUpload($event)" type="file" formControlName="cover_picture"/>
+                        </div>                 
+                    </div>
+
+                  
+                      <div class="form-group">
+                          <label for="file_name">Upload Song</label>
+                          <input name="Select Song" class="form-control song_upload" formControlName="file_name" (change)="fileSongUpload($event)" type="file" />
+                          <video controls *ngIf="songURL!=''" style="width: 418px;padding: 5px 5px;">
+                              <source src="{{songURL}}" type="video/mp4" class="form-control">
+                          </video>
+                          <ng-container *ngIf="formSubmitted && f['file_name'].errors">
+                              <div *ngIf="f['file_name'].errors.required || f['file_name'].errors.nospace">*Please upload song</div>
+                          </ng-container>
+                      </div>
+
+                        <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="albumName">Podcast Categories</label>
+                                        <select class="form-control" name="podcastCategory" formControlName="podcast_category_id">
+                                            <option value="">Select Podcast Category</option>
+                                            <option *ngFor="let podcastCategory of podcastCategoryList" value="{{podcastCategory.id}}">
+                                                {{podcastCategory.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div> 
+
+                                
+                          <div class="form-group mt-3">
+                              <label for="Title"><h5>Name</h5></label>
+                              <input type="text" class="form-control"  placeholder="Enter Title" formControlName="name" maxlength="100">
+                              <ng-container *ngIf="formSubmitted && f['name'].errors">
+                               <span *ngIf="f['name'].errors.required || f['name'].errors.noSpace" style="color: #ff301e;">*Please enter the title</span>
+                              </ng-container> 
+                          </div>
+
+                           <div class="form-group mt-3">
+                              <label for="Length"><h5>length</h5></label>
+                              <input type="text" class="form-control"  placeholder="Enter Length" formControlName="length" maxlength="100">
+                              <ng-container *ngIf="formSubmitted && f['length'].errors">
+                               <span *ngIf="f['length'].errors.required || f['length'].errors.noSpace" style="color: #ff301e;">*Please enter the Length</span>
+                              </ng-container> 
+                          </div>
+                           <div class="form-group mt-3">
+                              <label for="Title"><h5>Details</h5></label>
+                              <input type="text" class="form-control"  formControlName="details" maxlength="100">
+                              <ng-container *ngIf="formSubmitted && f['details'].errors">
+                               <span *ngIf="f['details'].errors.required || f['details'].errors.noSpace" style="color: #ff301e;">*Please Enter Details</span>
+                              </ng-container> 
+                          </div>
+                  </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn btn-danger blue_but m-0">Add</button>
+                </div>
+            </form>
+
+       
+        <!-- LOADER -->
+        <div  align="center" *ngIf="isLoading" class="loder">
+         <img  src="assets/images/loader.gif" alt="loader" />  
+     </div> 
